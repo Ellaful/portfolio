@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ella Hung</title>
+
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="./assets/scripts/sound-button.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="./cursor.js" defer></script>
+    <script src="./window-functions.js" defer></script>
+</head>
+
+<body>
+    <!-- Projects -->
+    <div id="project-content" class="flex flex-row items-center justify-center">
+        <button class="hover:opacity-50 transition-opacity duration-300 w-[15vw] h-auto" onclick="openWindow()">
+            <img class="projects-icon" src="./assets/icons/moon-icon.PNG" alt="projects button">
+        </button>
+        <button class="hover:opacity-50 transition-opacity duration-300 w-[15vw] h-auto">
+            <img class="projects-icon" src="./assets/icons/star-icon.PNG" alt="projects button">
+        </button>
+        <button class="hover:opacity-50 transition-opacity duration-300 w-[15vw] h-auto">
+            <img class="projects-icon" src="./assets/icons/shine-icon.PNG" alt="projects button">
+        </button>
+    </div>
+
+    <!-- Draggable Window: Projects -->
+    <div id="window-wrapper" class="bg-[#3D2C72] w-[40%] rounded-2xl absolute left-0 right-0 top-0 bottom-0 m-auto shadow-lg">
+        <div id="window-header"
+            class="p-[1vw] pl-[1.5vw] pr-[1.5vw] border-b border-gray-300 text-xl flex justify-between items-center text-white">
+
+            <!-- Logo -->
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18.5" stroke="#F5EEF6" stroke-width="3" />
+                <path
+                    d="M19.8712 9C17.9028 9.00037 15.9715 9.54128 14.2831 10.565C12.5948 11.5888 11.2129 13.057 10.2847 14.813C9.35657 16.5691 8.917 18.5471 9.01292 20.536C9.10884 22.525 9.73664 24.4503 10.8294 26.1066C11.9221 27.7629 13.4387 29.088 15.2175 29.9406C16.9963 30.7933 18.9705 31.1414 20.9296 30.948C22.8886 30.7545 24.759 30.0266 26.3412 28.8421C27.9235 27.6575 29.1581 26.0606 29.9136 24.2218C30.2844 23.3198 29.396 22.4134 28.5023 22.7808C26.9704 23.4085 25.2696 23.4733 23.6954 22.9639C22.1213 22.4544 20.7734 21.403 19.8861 19.9923C18.9988 18.5817 18.6283 16.9011 18.8389 15.2427C19.0495 13.5843 19.828 12.053 21.0389 10.9151L21.1227 10.8271C21.7218 10.1341 21.2455 9.0088 20.2985 9.0088H20.0092L19.9353 9.0022L19.8712 9Z"
+                    fill="#F5EEF6"/>
+            </svg>
+
+            <div id="actions" class="flex items-center gap-[0.5vw]" onmousedown="event.stopPropagation(); event.preventDefault();">
+                <!-- <i class="action-icon fa-solid fa-expand fa-xl" style="color: rgb(255, 255, 255);" onclick="toggleMaximise()"></i> -->
+                <div class="close-window" onclick="closeWindow()">
+                    <i class="action-icon fa-solid fa-xmark fa-xl" style="color: rgb(255, 255, 255);"></i>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="p-[2vw] text-center text-white">
+            <h2 class="text-2xl mb-[1vw]">Draggable Window</h2>
+            <p class="mb-[2vw] ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                incididunt ut labore et
+                dolore magna aliqua.</p>
+            <p class="mb-[2vw]">A person of note incarcerated for being a dangerous criminal. He’s a self-described sadist
+                    who enjoys
+                    causing chaos and agitating people. Once an acclaimed pianist who was lauded for his precise
+                    technique, Kuguri has since disappeared from the world of classical music following a certain
+                    incident.A person of note incarcerated for being a dangerous criminal. He’s a self-described sadist
+                    who enjoys
+                    causing chaos and agitating people. Once an acclaimed pianist who was lauded for his precise
+                    technique, Kuguri has since disappeared from the world of classical music following a certain
+                    incident.A person of note incarcerated for being a dangerous criminal. He’s a self-described sadist
+                    who enjoys
+                    causing chaos and agitating people. Once an acclaimed pianist who was lauded for his precise
+                    technique, Kuguri has since disappeared from the world of classical music following a certain
+                    incident.A person of note incarcerated for being a dangerous criminal. He’s a self-described sadist
+                    who enjoys
+                    causing chaos and agitating people. Once an acclaimed pianist who was lauded for his precise
+                    technique, Kuguri has since disappeared from the world of classical music following a certain
+                    incident.</p>
+        </div>
+    </div>
+
+    <!-- Background Sound -->
+    <div id="footer" class="fixed bottom-0 right-0">
+        <audio id="bg-sound" loop>
+            <source src="./assets/audio/rain-sound.mp3" type="audio/mpeg">
+            <source src="./assets/audio/rain-sound.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+
+        <button id="sound-btn" onclick="playPause()">
+            <svg width="40" height="40" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="sound-icon"
+                    d="M1.41 0L0 1.41L4.36 5.77L4.07 6.07H0.0699999V12.07H4.07L9.07 17.07V10.48L13.25 14.66C12.6 15.15 11.87 15.54 11.07 15.77V17.83C12.41 17.53 13.64 16.91 14.68 16.08L16.73 18.13L18.14 16.72L1.41 0ZM7.07 12.24L4.9 10.07H2.07V8.07H4.9L5.78 7.19L7.07 8.48V12.24ZM16.07 9.07C16.07 9.89 15.92 10.68 15.66 11.41L17.19 12.94C17.75 11.77 18.07 10.46 18.07 9.07C18.07 4.79 15.08 1.21 11.07 0.3V2.36C13.96 3.22 16.07 5.9 16.07 9.07ZM9.07 1.07L7.19 2.95L9.07 4.83V1.07ZM13.57 9.07C13.57 7.3 12.55 5.78 11.07 5.04V6.83L13.55 9.31C13.56 9.23 13.57 9.15 13.57 9.07Z"
+                    fill="white" fill-opacity="0.75" />
+            </svg>
+        </button>
+    </div>
+
+
+</body>
+
+</html>
