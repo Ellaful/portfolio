@@ -57,31 +57,50 @@ document.querySelectorAll('.window-wrapper').forEach(win => {
   });
 });
 
-// header.addEventListener('mousedown', (e)=> {
-//     isMouseDown = true;
-//     offsetX = wrapper.offsetLeft - e.clientX;
-//     offsetY = wrapper.offsetTop - e.clientY;
-// });
+// // maximise window
+// function maximiseWindow(id) {
+//   const win = document.getElementById(id);
+//   const header = win.querySelector('.window-header');
 
-// document.addEventListener('mousemove', (e)=> {
-//     if (!isMouseDown) return;
-//     e.preventDefault();
-//     wrapper.style.left = (e.clientX + offsetX) + 'px';
-//     wrapper.style.top = (e.clientY + offsetY) + 'px';
+//   if (win.dataset.maximized === "true") {
+//     win.style.left = win.dataset.prevLeft;
+//     win.style.top = win.dataset.prevTop;
+//     win.style.width = win.dataset.prevWidth;
+//     win.style.height = win.dataset.prevHeight;
+//     win.classList.remove('fixed', 'inset-0', 'w-screen', 'h-screen');
+//     win.classList.add('absolute');
+//     win.dataset.maximized = "false";
+//     header.style.cursor = 'move';
+//     return;
+//   }
 
-//     wrapper.classList.remove('left-0', 'right-0', 'top-0', 'bottom-0');
-//     wrapper.style.left
-// });
+//   win.dataset.prevLeft = win.style.left || win.offsetLeft + 'px';
+//   win.dataset.prevTop = win.style.top || win.offsetTop + 'px';
+//   win.dataset.prevWidth = win.style.width || win.offsetWidth + 'px';
+//   win.dataset.prevHeight = win.style.height || win.offsetHeight + 'px';
 
-// document.addEventListener('mouseup', ()=> {
-//     isMouseDown = false;
-// });
-
-// // Maximize button event listener -- add feature later
-// function toggleMaximise() {
-//     if (wrapper.classList.contains('w-full')) {
-//         wrapper.classList.remove('w-full', 'h-full');
-//     } else {
-//         wrapper.classList.add('w-full', 'h-full');
-//     }
+//   win.classList.remove('absolute');
+//   win.classList.add('fixed', 'inset-0', 'w-screen', 'h-screen');
+//   win.style.left = '0px';
+//   win.style.top = '0px';
+//   win.dataset.maximized = "true";
+//   header.style.cursor = 'default';
+//   bringToFront(win);
 // }
+
+// // prevent drag when maximised
+// document.querySelectorAll('.window-header').forEach(header => {
+//   header.addEventListener('mousedown', (e) => {
+//     if (e.target.closest('.actions')) return;
+
+//     const active = header.closest('.window-wrapper');
+//     if (active.dataset.maximized === "true") return;
+
+//     activeWindow = active;
+//     activeWindow.classList.remove('left-0', 'right-0', 'top-0', 'bottom-0', 'm-auto');
+//     bringToFront(activeWindow);
+
+//     offsetX = e.clientX - activeWindow.offsetLeft;
+//     offsetY = e.clientY - activeWindow.offsetTop;
+//   });
+// });

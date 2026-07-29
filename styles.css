@@ -16,13 +16,37 @@ body {
     position: relative;
 }
 
-button {
+h1 {
+    font-size: 32px;
+    color: white;
+}
+
+h2 {
+    font-size: 24px;
+    color: white;
+}
+
+p {
+    font-size: 16px;
+    color: white;
+}
+
+.link {
+    text-decoration: underline;
+    color: #EE89F2;
+}
+
+.link:hover {
+    color: #FDC6FF;
+}
+
+button:not(.close-window) {
     background: none;
     border: none;
     color: none;
     cursor: pointer;
 
-    margin: 7vh 5vw;
+    margin: 7vh 3vw;
 }
 
 #container {
@@ -43,17 +67,33 @@ button {
     transform: translate(-50%, -50%);
 
     width: 50%;
-    height: 60%;
+    height: 65%;
     overflow: hidden; 
     z-index: 1;
 }
 
-#content {
+.content {
     width: 100%;
     height: 90%;
     overflow: hidden;
 }
 
-.window-wrapper:hover #content {
+.window-wrapper:hover .content {
     overflow: auto;
+}
+
+.main-content {
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+}
+
+.flag {
+    width: 100%;
+    height: auto;
+    min-width: 6rem;
+}
+
+.soft-logo {
+    width: 18%;
+    height: auto;
 }
