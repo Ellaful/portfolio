@@ -13,8 +13,10 @@
 
     <script src="./assets/scripts/sound-button.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="./cursor.js" defer></script>
-    <script src="./window-functions.js" defer></script>
+    <script src="./assets/scripts/cursor.js" defer></script>
+    <script src="./assets/scripts/window-functions.js" defer></script>
+    <script src="./assets/scripts/load-project.js" defer></script>
+    <script src="./assets/scripts/select-project.js"></script>
 </head>
 
 <body>
@@ -141,7 +143,7 @@
 
     <!-- Draggable Window: Projects -->
     <div id="proj-window"
-        class="window-wrapper bg-[#3D2C72] w-[40%] rounded-2xl absolute left-0 right-0 m-auto shadow-lg hidden">
+        class="window-wrapper bg-[#3D2C72] rounded-2xl absolute left-0 right-0 m-auto shadow-lg hidden flex flex-col overflow-hidden">
         <div id="proj-header"
             class="window-header p-[1vw] pl-[1.5vw] pr-[1.5vw] border-b border-gray-300 text-xl flex justify-between items-center text-white">
 
@@ -162,14 +164,25 @@
             </div>
         </div>
 
-        <div id="proj-nav" class="flex min-h-0">
-            <nav class="w-[25%] border-r border-gray-300 text-white flex flex-col gap-2">
-                <button class="project-btn" data-project="proj1">Project 1</button>
-                <button class="project-btn" data-project="proj2">Project 2</button>
-                <button class="project-btn" data-project="proj3">Project 3</button>
+        <div id="proj-nav" class="flex flex-1 min-h-0">
+            <nav class="w-[12rem] h-full border-r border-gray-300 divide-y divide-gray-300 text-white flex flex-col overflow-hidden">
+                <button class="project-btn flex-1 w-full"
+                    onclick="setActiveProject(this); loadProject('./projects/project-1.html')">
+                    Health-tech design system
+                </button>
+
+                <button class="project-btn flex-1 w-full"
+                    onclick="setActiveProject(this); loadProject('./projects/project-2.html')">
+                    Activism Flexible Branding System
+                </button>
+
+                <button class="project-btn flex-1 w-full"
+                    onclick="setActiveProject(this); loadProject('./projects/project-3.html')">
+                    Future of Content Creation
+                </button>
             </nav>
 
-            <section id="project-detail" class="flex-1 p-6 text-white overflow-y-auto">
+            <section id="project-detail" class="flex-1 min-h-0 p-6 text-white overflow-y-auto">
                 Select a project.
             </section>
         </div>
@@ -177,7 +190,7 @@
 
     <!-- Draggable Window: Contact -->
     <div id="contact-window"
-        class="window-wrapper bg-[#3D2C72] w-[40%] rounded-2xl absolute left-0 right-0 m-auto shadow-lg hidden">
+        class="window-wrapper bg-[#3D2C72] w-[40%] h-[65%] rounded-2xl absolute left-0 right-0 m-auto shadow-lg hidden flex-col overflow-hidden">
         <div id="contact-header"
             class="window-header p-[1vw] pl-[1.5vw] pr-[1.5vw] border-b border-gray-300 text-xl flex justify-between items-center text-white">
 
@@ -199,9 +212,27 @@
             </div>
         </div>
 
-        <div id="" class="content p-[2vw] text-center text-white">
+        <div class="content flex-1 min-h-0 overflow-y-auto p-[2vw] text-center text-white">
             <h2 class="text-2xl mb-[1vw]">Contact Me!</h2>
             <p class="mb-[2vw]">He shares the Rat Room with Yodaka.
+                Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
+                name reminded him of the alias he uses when he calls into radio shows.[1]
+                Nagi regularly falls from the 4th and 5th stories of buildings.
+                When showering, he washes his collarbones first.
+                On his days off, he spends his time fixing up his motorbike.
+                He came up with the catchphrase "HAMA Nice Trip".[2]He shares the Rat Room with Yodaka.
+                Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
+                name reminded him of the alias he uses when he calls into radio shows.[1]
+                Nagi regularly falls from the 4th and 5th stories of buildings.
+                When showering, he washes his collarbones first.
+                On his days off, he spends his time fixing up his motorbike.
+                He came up with the catchphrase "HAMA Nice Trip".[2]He shares the Rat Room with Yodaka.
+                Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
+                name reminded him of the alias he uses when he calls into radio shows.[1]
+                Nagi regularly falls from the 4th and 5th stories of buildings.
+                When showering, he washes his collarbones first.
+                On his days off, he spends his time fixing up his motorbike.
+                He came up with the catchphrase "HAMA Nice Trip".[2]He shares the Rat Room with Yodaka.
                 Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
                 name reminded him of the alias he uses when he calls into radio shows.[1]
                 Nagi regularly falls from the 4th and 5th stories of buildings.
