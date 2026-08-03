@@ -17,6 +17,7 @@
     <script src="./assets/scripts/window-functions.js" defer></script>
     <script src="./assets/scripts/load-project.js" defer></script>
     <script src="./assets/scripts/select-project.js"></script>
+    <script src="./assets/scripts/zoomable-images.js" defer></script>
 </head>
 
 <body>
@@ -165,7 +166,8 @@
         </div>
 
         <div id="proj-nav" class="flex flex-1 min-h-0">
-            <nav class="w-[12rem] h-full border-r border-gray-300 divide-y divide-gray-300 text-white flex flex-col overflow-hidden">
+            <nav
+                class="w-[12rem] h-full border-r border-gray-300 divide-y divide-gray-300 text-white flex flex-col overflow-hidden">
                 <button class="project-btn flex-1 w-full"
                     onclick="setActiveProject(this); loadProject('./projects/project-1.html')">
                     Health-tech design system
@@ -240,6 +242,11 @@
                 On his days off, he spends his time fixing up his motorbike.
                 He came up with the catchphrase "HAMA Nice Trip".[2]</p>
         </div>
+    </div>
+
+    <!--Zoomable Images Modal-->
+    <div id="imgModal" class="fixed inset-0 z-[9999] hidden bg-black/90">
+        <img id="imgModalContent" class="absolute inset-0 m-auto max-w-[95vw] max-h-[95vh] object-contain" alt="">
     </div>
 
     <!-- Background Sound -->
