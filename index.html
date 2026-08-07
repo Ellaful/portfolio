@@ -11,6 +11,12 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
     <script src="./assets/scripts/sound-button.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="./assets/scripts/cursor.js" defer></script>
@@ -22,18 +28,18 @@
 
 <body>
     <!-- Projects -->
-    <div id="project-content" class="flex flex-row items-center justify-center">
-        <button class="hover:opacity-50 transition-opacity duration-300 w-[15vw] h-auto"
+    <div id="project-content" class="flex md:flex-row flex-col items-center justify-center">
+        <button class="main-btn hover:opacity-50 transition-opacity duration-300 w-40 md:w-[15vw] h-auto"
             onclick="openWindow('about-window')">
             <img class="projects-icon" src="./assets/icons/moon-icon.PNG" alt="about me button">
             <h2>about</h2>
         </button>
-        <button class="hover:opacity-50 transition-opacity duration-300 w-[15vw] h-auto"
+        <button class="main-btn hover:opacity-50 transition-opacity duration-300 w-40 md:w-[15vw] h-auto"
             onclick="openWindow('proj-window')">
             <img class="projects-icon" src="./assets/icons/star-icon.PNG" alt="projects button">
             <h2>projects</h2>
         </button>
-        <button class="hover:opacity-50 transition-opacity duration-300 w-[15vw] h-auto"
+        <button class="main-btn hover:opacity-50 transition-opacity duration-300 w-40 md:w-[15vw] h-auto"
             onclick="openWindow('contact-window')">
             <img class="projects-icon" src="./assets/icons/shine-icon.PNG" alt="contace me button">
             <h2>contact</h2>
@@ -192,56 +198,55 @@
 
     <!-- Draggable Window: Contact -->
     <div id="contact-window"
-        class="window-wrapper bg-[#3D2C72] w-[40%] h-[65%] rounded-2xl absolute left-0 right-0 m-auto shadow-lg hidden flex-col overflow-hidden">
+        class="window-wrapper bg-[#3D2C72] w-[40%] rounded-2xl absolute left-0 right-0 m-auto shadow-lg hidden">
         <div id="contact-header"
             class="window-header p-[1vw] pl-[1.5vw] pr-[1.5vw] border-b border-gray-300 text-xl flex justify-between items-center text-white">
 
-            <!-- Logo -->
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="18.5" stroke="#F5EEF6" stroke-width="3" />
-                <path
-                    d="M19.8712 9C17.9028 9.00037 15.9715 9.54128 14.2831 10.565C12.5948 11.5888 11.2129 13.057 10.2847 14.813C9.35657 16.5691 8.917 18.5471 9.01292 20.536C9.10884 22.525 9.73664 24.4503 10.8294 26.1066C11.9221 27.7629 13.4387 29.088 15.2175 29.9406C16.9963 30.7933 18.9705 31.1414 20.9296 30.948C22.8886 30.7545 24.759 30.0266 26.3412 28.8421C27.9235 27.6575 29.1581 26.0606 29.9136 24.2218C30.2844 23.3198 29.396 22.4134 28.5023 22.7808C26.9704 23.4085 25.2696 23.4733 23.6954 22.9639C22.1213 22.4544 20.7734 21.403 19.8861 19.9923C18.9988 18.5817 18.6283 16.9011 18.8389 15.2427C19.0495 13.5843 19.828 12.053 21.0389 10.9151L21.1227 10.8271C21.7218 10.1341 21.2455 9.0088 20.2985 9.0088H20.0092L19.9353 9.0022L19.8712 9Z"
-                    fill="#F5EEF6" />
-            </svg>
+            <div id="info" class="flex items-center gap-4">
+                <!-- Logo -->
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18.5" stroke="#F5EEF6" stroke-width="3" />
+                    <path
+                        d="M19.8712 9C17.9028 9.00037 15.9715 9.54128 14.2831 10.565C12.5948 11.5888 11.2129 13.057 10.2847 14.813C9.35657 16.5691 8.917 18.5471 9.01292 20.536C9.10884 22.525 9.73664 24.4503 10.8294 26.1066C11.9221 27.7629 13.4387 29.088 15.2175 29.9406C16.9963 30.7933 18.9705 31.1414 20.9296 30.948C22.8886 30.7545 24.759 30.0266 26.3412 28.8421C27.9235 27.6575 29.1581 26.0606 29.9136 24.2218C30.2844 23.3198 29.396 22.4134 28.5023 22.7808C26.9704 23.4085 25.2696 23.4733 23.6954 22.9639C22.1213 22.4544 20.7734 21.403 19.8861 19.9923C18.9988 18.5817 18.6283 16.9011 18.8389 15.2427C19.0495 13.5843 19.828 12.053 21.0389 10.9151L21.1227 10.8271C21.7218 10.1341 21.2455 9.0088 20.2985 9.0088H20.0092L19.9353 9.0022L19.8712 9Z"
+                        fill="#F5EEF6" />
+                </svg>
 
-            <!--Action Bar-->
+                <p>Contact Me</p>
+            </div>
+
             <div id="actions" class="flex items-center gap-[0.5vw]"
                 onmousedown="event.stopPropagation(); event.preventDefault();">
-                <!-- <i class="action-icon fa-solid fa-expand fa-xl" style="color: rgb(255, 255, 255);" onclick="toggleMaximise()"></i> -->
+                <!-- <i class="action-icon fa-solid fa-expand fa-xl" style="color: rgb(255, 255, 255);" onclick="maximiseWindow('about-window')"></i> -->
                 <button class="close-window" onclick="closeWindow('contact-window')">
                     <i class="action-icon fa-solid fa-xmark fa-xl" style="color: rgb(255, 255, 255);"></i>
                 </button>
             </div>
         </div>
 
-        <div class="content flex-1 min-h-0 overflow-y-auto p-[2vw] text-center text-white">
-            <h2 class="text-2xl mb-[1vw]">Contact Me!</h2>
-            <p class="mb-[2vw]">He shares the Rat Room with Yodaka.
-                Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
-                name reminded him of the alias he uses when he calls into radio shows.[1]
-                Nagi regularly falls from the 4th and 5th stories of buildings.
-                When showering, he washes his collarbones first.
-                On his days off, he spends his time fixing up his motorbike.
-                He came up with the catchphrase "HAMA Nice Trip".[2]He shares the Rat Room with Yodaka.
-                Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
-                name reminded him of the alias he uses when he calls into radio shows.[1]
-                Nagi regularly falls from the 4th and 5th stories of buildings.
-                When showering, he washes his collarbones first.
-                On his days off, he spends his time fixing up his motorbike.
-                He came up with the catchphrase "HAMA Nice Trip".[2]He shares the Rat Room with Yodaka.
-                Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
-                name reminded him of the alias he uses when he calls into radio shows.[1]
-                Nagi regularly falls from the 4th and 5th stories of buildings.
-                When showering, he washes his collarbones first.
-                On his days off, he spends his time fixing up his motorbike.
-                He came up with the catchphrase "HAMA Nice Trip".[2]He shares the Rat Room with Yodaka.
-                Their room name is "Drowned Rat, Dry it" (濡れ鼠、乾く, Nurenezumi, Kawaku). Nagi chose this room because its
-                name reminded him of the alias he uses when he calls into radio shows.[1]
-                Nagi regularly falls from the 4th and 5th stories of buildings.
-                When showering, he washes his collarbones first.
-                On his days off, he spends his time fixing up his motorbike.
-                He came up with the catchphrase "HAMA Nice Trip".[2]</p>
-        </div>
+        <section class="flex">
+            <div class="content p-10 text-white">
+                <div class="mb-5">
+                    <h1 class="mb-3">Contact</h1>
+                    <p class="mb-3">The best way to contact me is through my email:</p>
+                    <a href="mailto:ellahung.melb@gmail.com" target="_blank" class="mb-3">
+                        <p class="link text-center">ellahung.melb@gmail.com</p>
+                    </a>
+                </div>
+
+                <div>
+                    <p class="mb-3">Or connect with me on LinkedIn:</p>
+                    <a href="https://www.linkedin.com/in/ella-hung/" target="_blank">
+                        <p class="link text-center">linkedin linkedin
+                            linkedin</p>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <img src="./assets/images/worm-gf-human.PNG" alt="Contact Image" class="rounded-lg">
+            </div>
+        </section>
+
     </div>
 
     <!--Zoomable Images Modal-->

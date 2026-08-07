@@ -6,6 +6,8 @@ let offsetX = 0;
 let offsetY = 0;
 let topZ = 100;
 
+let dragEnabled = false;
+
 function closeWindow(id) {
     win = document.getElementById(id);
     win.classList.add('hidden');
@@ -19,17 +21,62 @@ function openWindow(id) {
 
 // bring the window to the front
 function bringToFront(win) {
-  topZ += 1;
-  win.style.zIndex = topZ;
+    topZ += 1;
+    win.style.zIndex = topZ;
 }
 
-// Move the window when the mouse is down and moving
-document.querySelectorAll('.window-header').forEach(header => {
-    header.addEventListener('mousedown', (e) => {
-        if (e.target.closest('.actions')) return;
+// set the mode based on the screen size
+function setMode(isMobile) {
+    dragEnabled = !isMobile;
+    activeWindow = null;
 
-        activeWindow = header.closest('.window-wrapper');
-        activeWindow.classList.remove('left-0', 'right-0', 'top-0', 'bottom-0', 'm-auto');
+    document.querySelectorAll(".window-wrapper").forEach(win => {
+        if (isMobile) {
+            // Mobile: fullscreen and fixed in place
+            win.classList.add("mobile-window");
+
+            win.style.left = "0px";
+            win.style.top = "0px";
+            win.style.transform = "none";
+            win.style.width = "100vw";
+            win.style.height = "100dvh";
+        } else {
+            // Desktop: remove mobile styles
+            win.classList.remove("mobile-window");
+
+            win.style.removeProperty("left");
+            win.style.removeProperty("top");
+            win.style.removeProperty("transform");
+            win.style.removeProperty("width");
+            win.style.removeProperty("height");
+        }
+    });
+}
+
+// Listen for changes in the screen size and update the mode accordingly
+const mobileQuery = window.matchMedia("(max-width: 768px)");
+
+setMode(mobileQuery.matches);
+
+mobileQuery.addEventListener("change", (event) => {
+    setMode(event.matches);
+});
+
+// Move the window when the mouse is down and moving
+document.querySelectorAll(".window-header").forEach(header => {
+    header.addEventListener("mousedown", (e) => {
+        if (!dragEnabled) return;
+        if (e.target.closest(".actions")) return;
+
+        activeWindow = header.closest(".window-wrapper");
+
+        activeWindow.classList.remove(
+            "left-0",
+            "right-0",
+            "top-0",
+            "bottom-0",
+            "m-auto"
+        );
 
         topZ += 1;
         activeWindow.style.zIndex = topZ;
@@ -39,22 +86,22 @@ document.querySelectorAll('.window-header').forEach(header => {
     });
 });
 
-document.addEventListener('mousemove', (e) => {
-    if (!activeWindow) return;
+document.addEventListener("mousemove", (e) => {
+    if (!activeWindow || !dragEnabled) return;
 
-    activeWindow.style.left = (e.clientX - offsetX) + 'px';
-    activeWindow.style.top = (e.clientY - offsetY) + 'px';
+    activeWindow.style.left = `${e.clientX - offsetX}px`;
+    activeWindow.style.top = `${e.clientY - offsetY}px`;
 });
 
-document.addEventListener('mouseup', () => {
+document.addEventListener("mouseup", () => {
     activeWindow = null;
 });
 
 // clicking on a window brings it to the front
 document.querySelectorAll('.window-wrapper').forEach(win => {
-  win.addEventListener('mousedown', () => {
-    bringToFront(win);
-  });
+    win.addEventListener('mousedown', () => {
+        bringToFront(win);
+    });
 });
 
 // // maximise window
