@@ -21,3 +21,13 @@ document.querySelectorAll('.main-btn').forEach(button => {
     clickSound.play();
   });
 });
+
+// close window sound
+const closeSound = new Audio('../assets/audio/bong_001.ogg');
+
+document.querySelectorAll('.close-window').forEach(button => {
+  button.addEventListener('click', () => {
+    closeSound.currentTime = 0; // Rewind to the start so rapid clicks play repeatedly
+    closeSound.play();
+  });
+});

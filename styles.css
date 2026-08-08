@@ -72,7 +72,7 @@ h2 {
     font-family: "Old Standard TT", serif;
 }
 
-p {
+p, td, th, li {
     font-size: 16px;
     color: white;
     font-family: "Noticia Text", serif;
@@ -230,7 +230,6 @@ td.info-data {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: center;
 }
 
 .descs-full {
