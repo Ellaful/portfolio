@@ -13,7 +13,7 @@ function playPause() {
 }
 
 // button click sound
-const clickSound = new Audio('../assets/audio/click_001.wav');
+const clickSound = new Audio('./assets/audio/click_001.wav');
 
 document.querySelectorAll('.main-btn').forEach(button => {
   button.addEventListener('click', () => {
@@ -23,7 +23,7 @@ document.querySelectorAll('.main-btn').forEach(button => {
 });
 
 // close window sound
-const closeSound = new Audio('../assets/audio/bong_001.ogg');
+const closeSound = new Audio('./assets/audio/bong_001.ogg');
 
 document.querySelectorAll('.close-window').forEach(button => {
   button.addEventListener('click', () => {
