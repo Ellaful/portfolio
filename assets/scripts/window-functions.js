@@ -70,6 +70,13 @@ document.querySelectorAll(".window-header").forEach(header => {
 
         activeWindow = header.closest(".window-wrapper");
 
+        // stop dragging if the window is maximized
+        const win = header.closest(".window-wrapper");
+
+        if (win.classList.contains("maximized-window")) {
+            return;
+        }
+
         activeWindow.classList.remove(
             "left-0",
             "right-0",
@@ -105,49 +112,36 @@ document.querySelectorAll('.window-wrapper').forEach(win => {
 });
 
 // // maximise window
-// function maximiseWindow(id) {
-//   const win = document.getElementById(id);
-//   const header = win.querySelector('.window-header');
+const maximiseSound = new Audio("./assets/audio/maximize_008.ogg");
+maximiseSound.volume = 0.5;
 
-//   if (win.dataset.maximized === "true") {
-//     win.style.left = win.dataset.prevLeft;
-//     win.style.top = win.dataset.prevTop;
-//     win.style.width = win.dataset.prevWidth;
-//     win.style.height = win.dataset.prevHeight;
-//     win.classList.remove('fixed', 'inset-0', 'w-screen', 'h-screen');
-//     win.classList.add('absolute');
-//     win.dataset.maximized = "false";
-//     header.style.cursor = 'move';
-//     return;
-//   }
+const minimiseSound = new Audio("./assets/audio/minimize_008.ogg");
+minimiseSound.volume = 0.5;
 
-//   win.dataset.prevLeft = win.style.left || win.offsetLeft + 'px';
-//   win.dataset.prevTop = win.style.top || win.offsetTop + 'px';
-//   win.dataset.prevWidth = win.style.width || win.offsetWidth + 'px';
-//   win.dataset.prevHeight = win.style.height || win.offsetHeight + 'px';
+function maximiseWindow(id) {
+    const win = document.getElementById(id);
+    const button = win.querySelector(".maximise-window i");
 
-//   win.classList.remove('absolute');
-//   win.classList.add('fixed', 'inset-0', 'w-screen', 'h-screen');
-//   win.style.left = '0px';
-//   win.style.top = '0px';
-//   win.dataset.maximized = "true";
-//   header.style.cursor = 'default';
-//   bringToFront(win);
-// }
+    const isMaximised = win.classList.toggle("maximized-window");
 
-// // prevent drag when maximised
-// document.querySelectorAll('.window-header').forEach(header => {
-//   header.addEventListener('mousedown', (e) => {
-//     if (e.target.closest('.actions')) return;
+    if (isMaximised) {
+        maximiseSound.currentTime = 0;
+        maximiseSound.play().catch(error => {
+            console.error("Maximise sound failed:", error);
+        });
 
-//     const active = header.closest('.window-wrapper');
-//     if (active.dataset.maximized === "true") return;
+        button.classList.remove("fa-expand");
+        button.classList.add("fa-compress");
+    } else {
+        minimiseSound.currentTime = 0;
+        minimiseSound.play().catch(error => {
+            console.error("Minimise sound failed:", error);
+        });
+        
+        button.classList.remove("fa-compress");
+        button.classList.add("fa-expand");
+    }
 
-//     activeWindow = active;
-//     activeWindow.classList.remove('left-0', 'right-0', 'top-0', 'bottom-0', 'm-auto');
-//     bringToFront(activeWindow);
-
-//     offsetX = e.clientX - activeWindow.offsetLeft;
-//     offsetY = e.clientY - activeWindow.offsetTop;
-//   });
-// });
+    activeWindow = null;
+    bringToFront(win);
+}

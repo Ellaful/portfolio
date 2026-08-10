@@ -94,13 +94,28 @@ button {
     font-size: 16px;
 }
 
-button:not(.close-window, .project-btn) {
+button:not(.close-window, .project-btn, .maximise-window) {
     background: none;
     border: none;
     color: none;
     cursor: pointer;
 
     margin: 7vh 3vw;
+}
+
+.window-wrapper.maximized-window {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
 }
 
 #container {
@@ -159,6 +174,27 @@ button:not(.close-window, .project-btn) {
 .main-content {
     margin-bottom: 1rem;
     margin-top: 3rem;
+}
+
+#footer {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 1000;
+}
+
+#sound-btn {
+    margin: 0 2rem 2rem 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#sound-icon {
+    display: block;
+    width: 6rem;
+    height: 6rem;
 }
 
 /*----------about me page-----------*/
@@ -330,5 +366,9 @@ td.info-data {
     .window-header {
         cursor: default;
         touch-action: none;
+    }
+
+    .maximise-window {
+        display: none;
     }
 }
