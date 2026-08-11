@@ -6,7 +6,7 @@ body {
 }
 
 body {
-    background-image: url("./assets/images/background-image.png");
+    background-image: url("./assets/images/background-image.PNG");
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -35,27 +35,27 @@ body {
 }
 
 .noticia-text-regular {
-  font-family: "Noticia Text", serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Noticia Text", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .noticia-text-bold {
-  font-family: "Noticia Text", serif;
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Noticia Text", serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .noticia-text-regular-italic {
-  font-family: "Noticia Text", serif;
-  font-weight: 400;
-  font-style: italic;
+    font-family: "Noticia Text", serif;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .noticia-text-bold-italic {
-  font-family: "Noticia Text", serif;
-  font-weight: 700;
-  font-style: italic;
+    font-family: "Noticia Text", serif;
+    font-weight: 700;
+    font-style: italic;
 }
 
 
@@ -72,7 +72,10 @@ h2 {
     font-family: "Old Standard TT", serif;
 }
 
-p, td, th, li {
+p,
+td,
+th,
+li {
     font-size: 16px;
     color: white;
     font-family: "Noticia Text", serif;
@@ -180,7 +183,7 @@ button:not(.close-window, .project-btn, .maximise-window) {
     position: fixed;
     right: 1rem;
     bottom: 1rem;
-    z-index: 1000;
+    z-index: 1;
 }
 
 #sound-btn {
@@ -262,20 +265,19 @@ td.info-data {
 }
 
 
-.text-desc {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .descs-full {
-    gap: 2rem;
+    gap: 0.5rem;
 }
 
 .descs-full img {
     border-radius: 1rem;
-    width: 100%;
-    margin-bottom: 1rem;
+    width: 80%;
+    margin-bottom: 0.5rem;
+}
+
+.descs-full .text-desc {
+    width: 80%;
+    text-align: left;
 }
 
 .research-text {
@@ -295,7 +297,7 @@ td.info-data {
 
     body {
         background-size: cover;
-        background-position: center;
+        background-position: 20% center;
     }
 
     h1 {
@@ -306,7 +308,10 @@ td.info-data {
         font-size: 20px;
     }
 
-    p {
+    p,
+    td,
+    th,
+    li {
         font-size: 14px;
     }
 
